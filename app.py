@@ -38,7 +38,7 @@ async def help(update:Update, context:ContextTypes.DEFAULT_TYPE):
 
 async def generate_joke(update:Update, context:ContextTypes.DEFAULT_TYPE, topic: str):
     await update.message.reply_text(f"Generating a joke about {topic}")
-    joke = setup_llm_chain(topic).invoke({}).strip()
+    joke = setup_llm_chain().invoke({"topic": topic}).strip()
     await update.message.reply_text(joke)
 
 async def handle_message(update:Update, context:ContextTypes.DEFAULT_TYPE):
